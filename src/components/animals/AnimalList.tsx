@@ -13,7 +13,11 @@ const AnimalList = () => {
 		<h2> Hamster list </h2>
 		{data
 		? data.map(hamster => (
-			<li key={hamster.id}> {hamster.name} </li>
+			<div key={hamster.id}>
+				<li> {hamster.name} </li>
+				<img src={'img/' + hamster.imgName} alt="test"/>
+			</div>
+			
 		))
 		: 'Loading hamsters...' }
 		</div>
