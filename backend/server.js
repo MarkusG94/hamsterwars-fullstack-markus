@@ -1,24 +1,41 @@
 const express = require('express')
-const cors = require('cors')
 const app = express()
+const cors = require('cors')
 
 const PORT = process.env.PORT || 1337
 
+const hamstersRoute = require('./src/routes/hamsterRoute')
+const matchesRoute = require('./src/routes/matchesRoute')
+const winners = require('./src/routes/winners')
+const losers = require('./src/routes/losers')
+const matchWinners = require('./src/routes/matchWinners')
+
+
 // Middleware - TODO
 // Exempel: static folders, logger, CORS
+app.use( express.urlencoded({ extended: true }) )
 app.use(cors())
 app.use( express.static(__dirname + '/../build') )
 
+app.use((req,res, next) => {
+    console.log(`${req.method} ${req.url}`, req.body);
+    next();
+})
+
 // Endpoints
+
+app.use( '/hamsters', hamstersRoute )
+app.use( '/matches', matchesRoute )
+app.use( '/winners', winners )
+app.use( '/losers', losers ) 
+app.use( '/matchWinners', matchWinners )
 // app.use om vi har en separat router-fil
+
 // app.get('/', (req, res) => {
 // 	console.log('Server received GET request /');
 // 	res.status(200).send('Server is online')
 // })
-const animalsData = ['Hund', 'Katt', 'Grävling', 'Orm', 'Älg']
-app.get('/animals', (req, res) => {
-	res.send(animalsData)
-})
+
 
 // Behövs om man använder React Router
 app.get('*', (req, res) => {
