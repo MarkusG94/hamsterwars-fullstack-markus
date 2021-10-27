@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
-type Animal = string;
+type Hamsters = any;
 const AnimalList = () => {
-	const [data, setData] = useState<Animal[] | null>(null)
+	const [data, setData] = useState<Hamsters[] | null>(null)
 
 	useEffect(() => {
 		sendRequest(setData)
@@ -10,18 +10,18 @@ const AnimalList = () => {
 
 	return (
 		<div>
-		<h2> Animal list </h2>
+		<h2> Hamster list </h2>
 		{data
-		? data.map(animal => (
-			<li> {animal} </li>
+		? data.map(hamster => (
+			<li key={hamster.name}> {hamster.name} </li>
 		))
-		: 'Loading animals...' }
+		: 'Loading hamsters...' }
 		</div>
 	)
 }
 
 async function sendRequest(saveData: any) {
-	const response = await fetch('/animals')
+	const response = await fetch('/hamsters')
 	const data = await response.json()
 	saveData(data)
 }
