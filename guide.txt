@@ -1,0 +1,10 @@
+Detta gör Heroku när man pushar koden:
+
+1. npm install
+// installerar alla paket i package.json
+
+2. npm run build
+// bygger React-appen och lägger filer i mappen build/
+
+3. npm run start
+// kör start-skriptet, som startar webbservern
