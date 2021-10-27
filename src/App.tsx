@@ -1,5 +1,8 @@
 import AnimalList from './components/animals/AnimalList'
 import './App.css';
+import { Route, Switch } from 'react-router';
+import { Link } from 'react-router-dom';
+import BadUrl from './components/BadUrl';
 
 function App() {
 	return (
@@ -7,12 +10,18 @@ function App() {
 		<header>
 			<h1> Fullstack app </h1>
 			<nav>
-				TODO: Router links
+				<Link to="/">Startsida</Link>
+				<Link to="/">Tävla</Link>
+				<Link to="/">Galleri</Link>
+
 			</nav>
 		</header>
 		<main>
-			TODO: switch components
-			<AnimalList />
+		<Switch>
+		<Route path="/" exact> <AnimalList /> </Route>
+		<Route path="/"> <BadUrl /> </Route>
+	</Switch>
+			
 		</main>
 		</div>
 	);

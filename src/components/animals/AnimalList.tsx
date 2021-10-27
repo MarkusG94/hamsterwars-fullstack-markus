@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 type Hamsters = any;
 const AnimalList = () => {
-	const [data, setData] = useState<Hamsters[] | null>(null)
+	const [data, setData] = useState<Hamsters[]>()
 
 	useEffect(() => {
 		sendRequest(setData)
@@ -13,7 +13,7 @@ const AnimalList = () => {
 		<h2> Hamster list </h2>
 		{data
 		? data.map(hamster => (
-			<li key={hamster.name}> {hamster.name} </li>
+			<li key={hamster.id}> {hamster.name} </li>
 		))
 		: 'Loading hamsters...' }
 		</div>
