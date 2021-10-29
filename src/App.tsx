@@ -1,24 +1,28 @@
-import AnimalList from './components/animals/AnimalList'
 import './App.css';
 import { Route, Switch } from 'react-router';
 import { Link } from 'react-router-dom';
 import BadUrl from './components/BadUrl';
+import Battle from './components/Battle';
+import Gallery from './components/Gallery';
+import StartPage from './components/StartPage';
 
 function App() {
 	return (
 		<div className="app">
 		<header>
-			<h1> Fullstack app </h1>
 			<nav>
-				<Link to="/">Startsida</Link>
-				<Link to="/">Tävla</Link>
-				<Link to="/">Galleri</Link>
+				<Link to="/">Home</Link>
+				<Link to="/battle">Battle</Link>
+				<Link to="/gallery">Gallery</Link>
 
 			</nav>
 		</header>
 		<main>
 		<Switch>
-		<Route path="/" exact> <AnimalList /> </Route>
+		<Route path="/" exact> <StartPage /> </Route>
+		<Route path="/battle"> <Battle /> </Route>
+		<Route path="/gallery"> <Gallery /> </Route>
+
 		<Route path="/"> <BadUrl /> </Route>
 	</Switch>
 			
