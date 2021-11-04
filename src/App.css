@@ -22,3 +22,10 @@ img {
 	margin: 1em;
 	background: #fff;
 }
+
+.challengers {
+	display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 10rem;
+}

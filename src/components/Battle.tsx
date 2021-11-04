@@ -98,10 +98,6 @@ const Battle = () => {
           "Loading first challenger....."
         )}
 
-        <br />
-       
-        <br /> 
-
         {randomHamsterTwo ? (
           <div className="challenger-card">
             <h2>{randomHamsterTwo.name}</h2>
@@ -116,13 +112,28 @@ const Battle = () => {
         )}
 
       </section>
-      ) : <section>
-             <h1>VS</h1>
+      ) : <section className="show-winner">
+              <h1>THE WINNER IS</h1>
             {winner? 
-            <div>The winner is {winner.name}</div> : 
-            null} {loser?
-            <div>The loser is {loser.name}</div> : null}
+            <section>
+            <div>
+            <br />
+            <img src={"img/" + winner.imgName} alt="A hamster" />
+            <br />
+            {winner.name}</div>
+             
+            </section>
+            : 
+            null} 
+            
+            {loser?
+           <div>loser is {loser.name}</div>
+           
+           
+           : null}
+           <div>
       <button onClick={() => setShowStats(true)}> next game</button>
+      </div>
       </section>
       }
  
