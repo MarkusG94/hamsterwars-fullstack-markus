@@ -20,17 +20,17 @@ function isHamsterObject(maybe) {
 
 function isUpdatedHamster(maybe) {
     if ((typeof maybe) !== 'object') {
-        return false
+        return false;
+    }
+    const keys = Object.keys(maybe);
+    const value = Object.values(maybe);
+
+    if (!keys.includes('wins') && !keys.includes('games') && !keys.includes('defeats')) {
+        return false;
     }
 
-
-    let keys = Object.keys(maybe)
-    if (!keys.includes('wins') ||
-        !keys.includes('games')) {
-        return false
-    }
-
-     return true
+    const filter = value.filter(x => (typeof x === 'number'));
+    return filter.length === 2 || 3 ;
 }
 
 

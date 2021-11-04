@@ -6,6 +6,7 @@ import Battle from './components/Battle';
 import Gallery from './components/Gallery';
 import StartPage from './components/StartPage';
 
+
 function App() {
 	return (
 		<div className="app">
@@ -18,6 +19,7 @@ function App() {
 			</nav>
 		</header>
 		<main>
+
 		<Switch>
 		<Route path="/" exact> <StartPage /> </Route>
 		<Route path="/battle"> <Battle /> </Route>
@@ -25,6 +27,7 @@ function App() {
 
 		<Route path="/"> <BadUrl /> </Route>
 	</Switch>
+
 			
 		</main>
 		</div>

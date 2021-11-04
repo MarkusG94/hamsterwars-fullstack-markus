@@ -11,6 +11,11 @@ const StartPage = () => {
         setCutestHamster(hamsters);
     }
 
+
+
+
+
+
     useEffect(() => {
         getCutestHamster();
     }, []);

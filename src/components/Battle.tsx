@@ -3,62 +3,132 @@ import { Hamster } from "../models/Hamster";
 
 const Battle = () => {
 
-  const [randomHamsterOne, setRandomHamsterOne] = useState<Hamster>();
-  const [randomHamsterTwo, setRandomHamsterTwo] = useState<Hamster>();
 
-  async function getRandomHamsterOne() {
-    const response = await fetch("/hamsters/random");
-    const data = await response.json();
-    setRandomHamsterOne(data);
-  }
+  const [showStats, setShowStats] = useState<boolean>(true);
+  const [randomHamsterOne, setRandomHamsterOne] = useState<Hamster | null>(null);
+  const [randomHamsterTwo, setRandomHamsterTwo] = useState<Hamster | null>(null);
+  const [winner, setWinner] = useState<Hamster | null>(null);
+  const [loser, setLoser] = useState<Hamster | null>(null);
 
-
-  async function getRandomHamsterTwo() {
-    const response = await fetch("/hamsters/random");
-    const data = await response.json();
-    setRandomHamsterTwo(data);
-  }
     
   useEffect(() => {
+    async function getRandomHamsterOne() {
+      const response = await fetch("/hamsters/random");
+      const hamsterOne = await response.json();
+      setRandomHamsterOne(hamsterOne);
+    }
+  
+  
+    async function getRandomHamsterTwo() {
+      const response = await fetch("/hamsters/random");
+      const hamsterTwo = await response.json();
+      setRandomHamsterTwo(hamsterTwo);
+    }
     getRandomHamsterOne();              
     getRandomHamsterTwo();
   }, []);
 
 
-  // console.log('hamster 1 ',  randomHamsterOne)
-  // console.log('hamster 2 ',  randomHamsterTwo)
 
+  async function voteWinner(winner: Hamster, loser: Hamster) {
+
+    await fetch('/matches', {
+      method: 'POST',
+      body: JSON.stringify({ winnerId: winner.id, loserId: loser.id }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+
+    await fetch(`/hamsters/${winner.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({wins: winner.wins + 1, games: winner.games + 1}),
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+      });
+
+    await fetch(`/hamsters/${loser.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({defeats: loser.defeats + 1, games: loser.games + 1}),
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+
+    
+    })
+
+    battleResults(winner, loser);
+    setShowStats(false);
+
+  };
+
+
+  
+  async function battleResults(winner: Hamster, loser: Hamster) {
+    const responseWinner = await fetch(`/hamsters/${winner.id}`);
+    const winnerResults = await responseWinner.json();
+    setWinner(winnerResults);
+
+    const responseLoser = await fetch(`/hamsters/${loser.id}`);
+    const loserResults = await responseLoser.json();
+    setLoser(loserResults);
+  }
+
+  
   return (
     <div>
-      <section>
+      {showStats ? ( 
+      <section className="challengers">
+        
 
         {randomHamsterOne ? (
-          <div>
+          <div className="challenger-card">
             <h2>{randomHamsterOne.name}</h2>
             <img src={"img/" + randomHamsterOne.imgName} alt="A hamster" />
-            <button>Vote</button>
+            <p> wins = {randomHamsterOne.wins}</p>
+            <p> defeats = {randomHamsterOne.defeats}</p>
+            <p> games = {randomHamsterOne.games}</p>
+            
+
+            <button onClick={(randomHamsterOne && randomHamsterTwo)? () => voteWinner(randomHamsterOne, randomHamsterTwo): undefined}>Vote</button>
           </div>
         ) : (
           "Loading first challenger....."
         )}
 
         <br />
-            <h1>VS</h1>
-        <br />
+       
+        <br /> 
 
         {randomHamsterTwo ? (
-          <div>
+          <div className="challenger-card">
             <h2>{randomHamsterTwo.name}</h2>
             <img src={"img/" + randomHamsterTwo.imgName} alt="A hamster" />
-            <button>Vote</button>
+            <p> wins = {randomHamsterTwo.wins}</p>
+            <p> defeats = {randomHamsterTwo.defeats}</p>
+            <p> games = {randomHamsterTwo.games}</p>
+            <button onClick={(randomHamsterOne && randomHamsterTwo)? () => voteWinner(randomHamsterTwo, randomHamsterOne): undefined}>Vote</button>
           </div>
         ) : (
           "Loading second challenger....."
         )}
 
       </section>
+      ) : <section>
+             <h1>VS</h1>
+            {winner? 
+            <div>The winner is {winner.name}</div> : 
+            null} {loser?
+            <div>The loser is {loser.name}</div> : null}
+      <button onClick={() => setShowStats(true)}> next game</button>
+      </section>
+      }
+ 
     </div>
   );
 };
+
 
 export default Battle;
