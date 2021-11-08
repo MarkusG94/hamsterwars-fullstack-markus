@@ -12,22 +12,26 @@ const Gallery = () => {
     }, []);
     
     return (
-        <div className="gallery">
-            <h1>Gallery</h1>
-            <div className="gallery-container">
-                {hamsters.map(hamster => (
-                    <div className="gallery-item" key={hamster.id}>
-                        <img src={'img/' + hamster.imgName} alt={hamster.name} />
-                        <div className="gallery-item-info">
-                            <h3>{hamster.name}</h3>
-                            <p>Loves: {hamster.loves}</p>
-                        </div>
-                    </div>
-                ))}
+            
+        <div className="card-container-body">
+            {hamsters.map(hamster => (
+        <div className="card" key={hamster.id} style={{ backgroundImage:`url('img/${hamster.imgName}')` }}>
+            <div className="card-content">
+                <h2 className="card-title">{hamster.name}</h2>
+                <p className="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Explicabo minima</p>
+                 <a href="#" className="button">Learn More</a>
             </div>
+            
         </div>
-    )
-}
+        ))}
+            
+    </div>
+
+    
+    )}
+
+
 
 
 

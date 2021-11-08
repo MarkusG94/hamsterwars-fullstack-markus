@@ -9,23 +9,35 @@ const Battle = () => {
   const [randomHamsterTwo, setRandomHamsterTwo] = useState<Hamster | null>(null);
   const [winner, setWinner] = useState<Hamster | null>(null);
   const [loser, setLoser] = useState<Hamster | null>(null);
+  const [game, setGame] = useState<boolean>(false);
 
     
+async function getRandomHamsters() {
+  const response = await fetch("/hamsters/random")
+  const hamsterOne = await response.json();
+  setRandomHamsterOne(hamsterOne);
+
+  const responseTwo = await fetch("/hamsters/random")
+  const hamsterTwo = await responseTwo.json();
+  setRandomHamsterTwo(hamsterTwo);
+}
+
   useEffect(() => {
-    async function getRandomHamsterOne() {
-      const response = await fetch("/hamsters/random");
-      const hamsterOne = await response.json();
-      setRandomHamsterOne(hamsterOne);
-    }
+    getRandomHamsters();
+    // async function getRandomHamsterOne() {
+    //   const response = await fetch("/hamsters/random");
+    //   const hamsterOne = await response.json();
+    //   setRandomHamsterOne(hamsterOne);
+    // }
   
   
-    async function getRandomHamsterTwo() {
-      const response = await fetch("/hamsters/random");
-      const hamsterTwo = await response.json();
-      setRandomHamsterTwo(hamsterTwo);
-    }
-    getRandomHamsterOne();              
-    getRandomHamsterTwo();
+    // async function getRandomHamsterTwo() {
+    //   const response = await fetch("/hamsters/random");
+    //   const hamsterTwo = await response.json();
+    //   setRandomHamsterTwo(hamsterTwo);
+    // }
+    // getRandomHamsterOne();              
+    // getRandomHamsterTwo();
   }, []);
 
 
@@ -76,6 +88,13 @@ const Battle = () => {
     setLoser(loserResults);
   }
 
+  function resetGame() { 
+    getRandomHamsters()
+    setShowStats(true)
+  }
+
+  
+
   
   return (
     <div>
@@ -113,15 +132,16 @@ const Battle = () => {
 
       </section>
       ) : <section className="show-winner">
-              <h1>THE WINNER IS</h1>
+              
             {winner? 
             <section>
-            <div>
+              <h1>THE WINNER IS</h1>
+            <div className="winner-card">
             <br />
             <img src={"img/" + winner.imgName} alt="A hamster" />
             <br />
-            {winner.name}</div>
-             
+            <h2>{winner.name}</h2>
+            </div>
             </section>
             : 
             null} 
@@ -132,7 +152,7 @@ const Battle = () => {
            
            : null}
            <div>
-      <button onClick={() => setShowStats(true)}> next game</button>
+      <button onClick={() => resetGame()}> next game</button>
       </div>
       </section>
       }

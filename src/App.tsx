@@ -15,6 +15,7 @@ function App() {
 
 		<Switch>
 		<Route path="/" exact> <StartPage /> </Route>
+		
 		<Route path="/battle"> <Battle /> </Route>
 		<Route path="/gallery"> <Gallery /> </Route>
 
