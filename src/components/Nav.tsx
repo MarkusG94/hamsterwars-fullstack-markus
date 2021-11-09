@@ -10,7 +10,7 @@ const Nav = () => {
 				<Link className="nav-link" to="/"><p className="nav-text">Home</p></Link>
 				<Link className="nav-link" to="/battle"><p className="nav-text">Battle</p></Link>
 				<Link className="nav-link" to="/gallery"><p className="nav-text">Gallery</p></Link>
-                <button className="nav-button">something</button>
+                {/* <button className="nav-button">something</button> */}
 
 			</nav>
 

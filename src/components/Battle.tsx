@@ -104,8 +104,8 @@ async function getRandomHamsters() {
 
         {randomHamsterOne ? (
           <div className="challenger-card">
-            <h2>{randomHamsterOne.name}</h2>
-            <img src={"img/" + randomHamsterOne.imgName} alt="A hamster" />
+            <h3>{randomHamsterOne.name}</h3>
+            <img className="challenger-img" src={"img/" + randomHamsterOne.imgName} alt="A hamster" />
             <p> wins = {randomHamsterOne.wins}</p>
             <p> defeats = {randomHamsterOne.defeats}</p>
             <p> games = {randomHamsterOne.games}</p>
@@ -119,8 +119,8 @@ async function getRandomHamsters() {
 
         {randomHamsterTwo ? (
           <div className="challenger-card">
-            <h2>{randomHamsterTwo.name}</h2>
-            <img src={"img/" + randomHamsterTwo.imgName} alt="A hamster" />
+            <h3>{randomHamsterTwo.name}</h3>
+            <img className="challenger-img" src={"img/" + randomHamsterTwo.imgName} alt="A hamster" />
             <p> wins = {randomHamsterTwo.wins}</p>
             <p> defeats = {randomHamsterTwo.defeats}</p>
             <p> games = {randomHamsterTwo.games}</p>
@@ -135,25 +135,28 @@ async function getRandomHamsters() {
               
             {winner? 
             <section>
-              <h1>THE WINNER IS</h1>
-            <div className="winner-card">
-            <br />
-            <img src={"img/" + winner.imgName} alt="A hamster" />
-            <br />
+              
+            <div className="challenger-card">
+            <h1>THE WINNER IS</h1>
             <h2>{winner.name}</h2>
+            <br />
+            <img className="challenger-img" src={"img/" + winner.imgName} alt="A hamster" />
+            <br />
+            <button onClick={() => resetGame()}> next game</button>
+           
             </div>
             </section>
             : 
             null} 
             
-            {loser?
+            {/* {loser?
            <div>loser is {loser.name}</div>
            
            
-           : null}
-           <div>
-      <button onClick={() => resetGame()}> next game</button>
-      </div>
+           : null} */}
+     <div>
+      
+    </div>
       </section>
       }
  
