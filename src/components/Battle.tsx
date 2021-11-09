@@ -142,7 +142,7 @@ async function getRandomHamsters() {
             <br />
             <img className="challenger-img" src={"img/" + winner.imgName} alt="A hamster" />
             <br />
-            <button onClick={() => resetGame()}> next game</button>
+            <button onClick={() => resetGame()}>next game</button>
            
             </div>
             </section>

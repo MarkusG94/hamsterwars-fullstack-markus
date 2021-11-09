@@ -2,25 +2,31 @@
 import { Hamster } from "../models/Hamster"
 
 interface HamsterCard {
-    hamsterList: Hamster;
+    hamster: Hamster;
+    deleteHamster: any;
+    
 }
 
 
-const GalleryCard = ({hamsterList}: HamsterCard ) => {
+const GalleryCard = ({hamster, deleteHamster}: HamsterCard ) => {
    
 
     return(
 
-    <div className="card" key={hamsterList.id}  style={{ backgroundImage:`url('img/${hamsterList.imgName}')` }}>
+    <div className="card" key={hamster.id}  style={{ backgroundImage:`url('img/${hamster.imgName}')` }}>
         <div className="card-content">
-            <h2 className="card-title">{hamsterList.name}</h2>
-            <p className="card-body">{hamsterList.name} är {hamsterList.age} år gammal och älskar att {hamsterList.loves}. <br/>
-            {hamsterList.name}s favoritmat är {hamsterList.favFood}
+            <h2 className="card-title">{hamster.name}</h2>
+            <p className="card-body">{hamster.name} är {hamster.age} år gammal och älskar att {hamster.loves}. <br/>
+            {hamster.name}s favoritmat är {hamster.favFood}
             </p>
-             <a href="#" className="button">Statistik</a>
+            <section className="button-container">
+             <div className="button">Statistik</div>
+             <div onClick={() => deleteHamster(hamster.id)} className="button-delete">Delete</div>
+             </section>
+
         </div>
     </div>
-    
+
     )
 }
 

@@ -2,6 +2,12 @@
 	padding: 0em 2em;
 }
 
+.app-main {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 img {
 	max-height: 10rem;
 	max-width: 15rem;
@@ -72,8 +78,32 @@ img {
 	background: #fff;
 }
 
+
+.overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100vw;
+    top: 0em;
+    left: 0em;
+	z-index: 1;
+}
+
+.overlay .addForm {
+	opacity: 1;
+	background-color: var(--body-background);
+    color: var(--heading-color);
+	/* width: 10em;
+	height: 10em; */
+    display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+    padding: 1em;
+}
+
 .challengers {
-/* set two cards next to each other and put them in the center */	
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 1em;
@@ -81,7 +111,6 @@ img {
 }
 
 .challenger-img {
-	/* both pictures should have same size no matter what */
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
@@ -235,6 +264,7 @@ img {
 	background-color: var(--clr-accent-400);
 	padding: 0.5em 1.25em;
 	border-radius: .25em;
+	margin-right: auto;
 }
 
 .button:hover,
@@ -242,6 +272,25 @@ img {
 	background-color: var(--clr-neutral-100);
 }
 
+.button-delete {
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+	color: var(--clr-neutral-900);
+	background-color: rgba(163, 4, 4, 0.938);
+	padding: 0.5em 1.25em;
+	border-radius: .25em;
+	margin-left: auto;
 
+}
 
+.button-delete:hover,
+.button-delete:focus {
+	background-color: red
+}
+
+.button-container {
+	display: flex;
+    justify-content: space-around;
+}
 
