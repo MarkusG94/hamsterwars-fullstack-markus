@@ -78,6 +78,7 @@ img {
 	background: #fff;
 }
 
+/* --------- OVERLAY --------- */
 
 .overlay {
     position: fixed;
@@ -91,17 +92,71 @@ img {
 
 .overlay .addForm {
 	opacity: 1;
-	background-color: var(--body-background);
-    color: var(--heading-color);
-	/* width: 10em;
-	height: 10em; */
-    display: inline-block;
+	background-image: linear-gradient(to left bottom, #aaaaaa, #b0aeb0, #b7b2b4, #bfb7b6, #c4bcb7, #c7c2bb, #cac7c0, #cdcdc5, #d3d3cc, #d9d9d4, #e0e0db, #e6e6e3);    color: var(--heading-color);
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
     padding: 1em;
+	border-radius: 4rem;
 }
+
+.custom-field {
+	position: relative;
+	font-size: 14px;
+	padding-top: 0.2rem;
+	margin-bottom: 5px;
+}
+
+.custom-field input {
+	border: none;
+	appearance: none;
+	background: #f2f2f2;
+	padding: 12px;
+	border-radius: 3px;
+	width: 250px;
+	outline: none;
+	font-size: 14px;
+}
+
+.custom-field .placeholder {
+	position: absolute;
+	left: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #aaa;
+	transition: 
+	top 0.3s ease,
+	font-size 0.3s ease,
+	color 0.3s ease,
+	;
+}
+.custom-field input:valid + .placeholder,
+.custom-field input:focus + .placeholder {
+	top: 10px;
+	font-size: 10px;
+	color: #222;
+
+}
+
+
+
+input:focus::placeholder {
+	color: transparent;
+}
+
+input::placeholder {
+	color: #222;
+	transition: color 0.3s ease;
+}
+
+
+
+/* --------- BATTLE --------- */
 
 .challengers {
 	display: grid;
@@ -292,5 +347,24 @@ img {
 .button-container {
 	display: flex;
     justify-content: space-around;
+}
+
+.invalid {
+	border: 3px red solid;
+}
+
+span.invalid {
+	display: block;
+	color: white;
+	background: red;
+}
+
+.valid {
+	border: 3px green solid;
+}
+
+span.valid {
+	display: none;
+	
 }
 

@@ -139,6 +139,8 @@ async function getRandomHamsters() {
             <div className="challenger-card">
             <h1>THE WINNER IS</h1>
             <h2>{winner.name}</h2>
+     
+
             <br />
             <img className="challenger-img" src={"img/" + winner.imgName} alt="A hamster" />
             <br />
