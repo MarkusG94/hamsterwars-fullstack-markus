@@ -1,16 +1,16 @@
 import './App.css';
-import { Route, Switch } from 'react-router';
 import BadUrl from './components/BadUrl';
 import Battle from './components/Battle';
 import Gallery from './components/Gallery';
 import StartPage from './components/StartPage';
 import Nav from './components/Nav';
-import { Link } from 'react-router-dom';
+import { Link, Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 
 function App() {
 	return (
 		<div className="app">
+			<Router>
 				<nav className="nav">
                 <section className="nav-logo-text">
                 <img className="nav-logo" src="img/hamster-logo.svg" alt ="a hamster" />
@@ -30,15 +30,15 @@ function App() {
 
 		<Switch>
 		<Route path="/" exact> <StartPage /> </Route>
-		
 		<Route path="/battle"> <Battle /> </Route>
 		<Route path="/gallery"> <Gallery /> </Route>
 
 		<Route path="/"> <BadUrl /> </Route>
-	</Switch>
+		</Switch>
 
 			
 		</main>
+		</Router>
 		</div>
 	);
 }
