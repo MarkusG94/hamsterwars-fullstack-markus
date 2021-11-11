@@ -17,7 +17,7 @@ const matchWinners = require('./src/routes/matchWinners')
 app.use( express.urlencoded({ extended: true }) )
 app.use( express.json() )
 app.use(cors())
-app.use('/', express.static(__dirname + '/build'))
+app.use('/', express.static(__dirname + '/../build'))
 //app.use(express.static(__dirname + '../public'))
 
 
