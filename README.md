@@ -2,7 +2,7 @@
 # Hamster Wars - Fullstack Project
 
 Hamster Wars är ett skolprojekt där man skulle bygga en fullstack sida. Projektet har varit uppdelat i två delar. Först gjorde man backend och nu i denna del skall man sätta ihop backend med frontend. 
-Teknikerna jag använt mig av är ``React,TypeScript,Node,Express,Firestore,Heroku, HTML, CSS.``
+Teknikerna jag använt mig av är ``React,TypeScript,Node,Express,Firestore,Heroku,HTML,CSS.``
 
 <hr>
 
