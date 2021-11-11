@@ -42,13 +42,14 @@ app.use( '/losers', losers )
 // 	res.status(200).send('Server is online')
 // })
 
-
+	// res.sendFile(__dirname + '../build/index.html')
 // Behövs om man använder React Router
-app.get('*', (req, res) => {
-	res.sendFile(__dirname + '../build/index.html')
-})
+    app.get('*', (req, res) => {
 
-app.listen(PORT, () => {
-	console.log(`Server is listening on port ${PORT}.`);
-})
+        res.sendFile(path.join(__dirname, '../build/index.html'))
+    })
+
+    app.listen(PORT, () => {
+        console.log(`Server is listening on port ${PORT}.`);
+    })
 
