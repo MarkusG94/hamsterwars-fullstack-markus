@@ -14,9 +14,10 @@ const matchWinners = require('./src/routes/matchWinners')
 // Middleware - TODO
 // Exempel: static folders, logger, CORS
 app.use( express.urlencoded({ extended: true }) )
-app.use(cors())
 app.use( express.json() )
-app.use( express.static(__dirname + '/../build') )
+app.use( cors() )
+
+app.use('/', express.static(__dirname + '/../build') )
 app.use(express.static(__dirname + '../public'))
 
 
