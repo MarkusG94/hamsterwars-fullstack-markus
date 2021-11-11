@@ -45,7 +45,8 @@ app.use( '/matchWinners', matchWinners )
 // Behövs om man använder React Router
 app.get('*', (req, res) => {
 	//res.sendFile(__dirname + '/build/index.html')
-    res.sendFile(__dirname + '/build/index.html') 
+    const index = path.join(__dirname, 'build', 'index.html');
+    res.sendFile(index); 
 })
 
 app.listen(PORT, () => {
