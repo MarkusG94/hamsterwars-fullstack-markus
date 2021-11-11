@@ -17,8 +17,9 @@ const matchWinners = require('./src/routes/matchWinners')
 app.use( express.urlencoded({ extended: true }) )
 app.use(cors())
 app.use( express.json() )
-app.use('/', express.static(__dirname + '/../build') )
+app.use(express.static(__dirname + '/../build') )
 app.use(express.static(__dirname + '../public'))
+// app.use(express.static(__dirname + '/../build'))
 
 
 app.use((req,res, next) => {
@@ -44,7 +45,7 @@ app.use( '/matchWinners', matchWinners )
 // Behövs om man använder React Router
 app.get('*', (req, res) => {
 	//res.sendFile(__dirname + '/build/index.html')
-    res.sendFile(path.resolve(__dirname + '../client/build/index.html'))
+    res.sendFile(__dirname + '/../build/index.html') 
 })
 
 app.listen(PORT, () => {
