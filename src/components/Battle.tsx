@@ -188,11 +188,11 @@ async function getRandomHamsters() {
           {winner && loser? (  
               <>
            <div className="next-game-btn">
-            <button onClick={() => resetGame()}>next game</button>
+            <button className="custom-btn btn-1" onClick={() => resetGame()}>next game</button>
             </div>
             
             </>  )  : null }
- 
+
     </div>
   );
 };

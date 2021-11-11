@@ -32,12 +32,13 @@ function App() {
 			<Route path="/" exact> <StartPage /> </Route>
 			<Route path="/battle"> <Battle /> </Route>
 			<Route path="/gallery"> <Gallery /> </Route>
-		
+
 			<Route path="*"> <BadUrl /> </Route>
 		</Switch>
 
 			
 		</main>
+		<footer className="asdasd"></footer>
 		
 		</div>
 	);

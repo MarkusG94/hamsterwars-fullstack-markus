@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans:ital@1&display=swap');
 
-#root {
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
 	background-color: #FFD595;
 }
 
@@ -403,6 +409,7 @@ input::placeholder {
     align-items: center;
     justify-content: center;
 	background: #FFE57D;
+	/* height: 100vh; */
 }
 
 .battle-text {
@@ -530,11 +537,7 @@ input::placeholder {
 	--clr-accent-400: hsl(142, 90%, 61%);
 }
 
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
+
 
 .card-container-body {
 	/* display: grid; */
