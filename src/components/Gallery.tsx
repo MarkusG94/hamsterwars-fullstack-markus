@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { Hamster } from "../models/Hamster";
-import Overlay from "./addHamster/Overlay";
+import Overlay from "./Overlay";
 import GalleryCard from "./GalleryCard";
+import OverlayStats from "./OverlayStats";
+
 
 
 const Gallery = () => {
     //get all hamsters from the database
     const [hamsters, setHamsters] = useState<Hamster[]>([]);
-	const [showAddHamsterOverlay, setShowAddHamsterOverlay] = useState<boolean>(true)  // ändra till false när vi testat klart
+	const [showAddHamsterOverlay, setShowAddHamsterOverlay] = useState<boolean>(false) 
+	const [showStats, setShowStats] = useState<boolean>(true)  // ändra till false när vi testat klart
+
 
 
     async function getHamsters() {
@@ -18,6 +22,10 @@ const Gallery = () => {
 
     const showOverlay = () => {
         setShowAddHamsterOverlay(true);
+    }
+
+    const showStatsOverlay = () => {
+        setShowStats(true);
     }
 
     useEffect(() => {
@@ -42,20 +50,27 @@ const Gallery = () => {
 		addHamsterOverlay = <Overlay close={closeOverlay} addHamster={addHamster} />
 		// JSX översätts till funktionsanrop: _jsx('h1', 'content')
 	}
+    let addStatsOverlay = null
+   
+    if(showStats) {
+        const closeStatsOverlay = () => setShowStats(false)
+        addStatsOverlay = <OverlayStats close={closeStatsOverlay} />
+    }
 
 
     return (
-        <div>
+        <>
             {addHamsterOverlay}
-            <button className="button" onClick={showOverlay}>ADD HAMSTER</button>
+            {addStatsOverlay}
+            <button className="button-add-hamster" onClick={showOverlay}>ADD HAMSTER</button>
         <div className="card-container-body">
             
              {hamsters.map(hamster => 
-                <GalleryCard hamster={hamster} key={hamster.id} deleteHamster={deleteHamster}
+                <GalleryCard hamster={hamster} key={hamster.id} deleteHamster={deleteHamster} closeStats={showStatsOverlay}
                 />)}
                 
             </div>
-        </div>
+        </>
 
     )
 }

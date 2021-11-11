@@ -8,12 +8,15 @@ const StartPage = () => {
     const getCutestHamster = async () => {
         const response = await fetch("/hamsters/cutest");
         const hamsters = await response.json();
-        setCutestHamster(hamsters);
+
+        if(hamsters && hamsters.length > 1) {
+            setCutestHamster([hamsters[Math.floor(Math.random() * hamsters.length)]]); 
+    } else if (hamsters && hamsters.length === 1) {
+        setCutestHamster([hamsters[0]]);
     }
-
-
-
-
+    
+}
+console.log();
 
 
     useEffect(() => {
@@ -21,8 +24,11 @@ const StartPage = () => {
     }, []);
 
     return(
+
         <div className="start-page">
-            <h1>Welcome to Hamster Wars</h1>
+             <div className="test-content">
+                <h1 className="test-title">Hamster Wars</h1>
+             </div>
 
            
         {cutestHamster
@@ -39,6 +45,6 @@ const StartPage = () => {
         
         </div>
     )
-}
+} 
 
 export default StartPage

@@ -9,7 +9,8 @@ const Battle = () => {
   const [randomHamsterTwo, setRandomHamsterTwo] = useState<Hamster | null>(null);
   const [winner, setWinner] = useState<Hamster | null>(null);
   const [loser, setLoser] = useState<Hamster | null>(null);
-  const [game, setGame] = useState<boolean>(false);
+
+ 
 
     
 async function getRandomHamsters() {
@@ -24,20 +25,7 @@ async function getRandomHamsters() {
 
   useEffect(() => {
     getRandomHamsters();
-    // async function getRandomHamsterOne() {
-    //   const response = await fetch("/hamsters/random");
-    //   const hamsterOne = await response.json();
-    //   setRandomHamsterOne(hamsterOne);
-    // }
-  
-  
-    // async function getRandomHamsterTwo() {
-    //   const response = await fetch("/hamsters/random");
-    //   const hamsterTwo = await response.json();
-    //   setRandomHamsterTwo(hamsterTwo);
-    // }
-    // getRandomHamsterOne();              
-    // getRandomHamsterTwo();
+
   }, []);
 
 
@@ -92,42 +80,47 @@ async function getRandomHamsters() {
     getRandomHamsters()
     setShowStats(true)
   }
-
   
-
   
   return (
-    <div>
+    
+    <div className="battle-container">
+     
+      <h1 className="battle-text">Vote for the cutest hamster</h1>
+
       {showStats ? ( 
       <section className="challengers">
         
-
         {randomHamsterOne ? (
+          
           <div className="challenger-card">
             <h3>{randomHamsterOne.name}</h3>
-            <img className="challenger-img" src={"img/" + randomHamsterOne.imgName} alt="A hamster" />
-            <p> wins = {randomHamsterOne.wins}</p>
+            <img className="challenger-img" src={randomHamsterOne.imgName.includes('http') ? randomHamsterOne.imgName : `img/${randomHamsterOne.imgName}` } alt="A hamster" />
+            {/* <p> wins = {randomHamsterOne.wins}</p>
             <p> defeats = {randomHamsterOne.defeats}</p>
-            <p> games = {randomHamsterOne.games}</p>
+            <p> games = {randomHamsterOne.games}</p> */}
             
-
+              <br />
             <button onClick={(randomHamsterOne && randomHamsterTwo)? () => voteWinner(randomHamsterOne, randomHamsterTwo): undefined}>Vote</button>
           </div>
         ) : (
-          "Loading first challenger....."
+          "Loading first hamster....."
         )}
+
+        <h1 className="battle-text">VS</h1>
 
         {randomHamsterTwo ? (
           <div className="challenger-card">
             <h3>{randomHamsterTwo.name}</h3>
-            <img className="challenger-img" src={"img/" + randomHamsterTwo.imgName} alt="A hamster" />
-            <p> wins = {randomHamsterTwo.wins}</p>
+            <img className="challenger-img" src={randomHamsterTwo.imgName.includes('http') ? randomHamsterTwo.imgName : `img/${randomHamsterTwo.imgName}` } alt="A hamster" />
+            {/* <p> wins = {randomHamsterTwo.wins}</p>
             <p> defeats = {randomHamsterTwo.defeats}</p>
-            <p> games = {randomHamsterTwo.games}</p>
+            <p> games = {randomHamsterTwo.games}</p> */}
+              <br />
             <button onClick={(randomHamsterOne && randomHamsterTwo)? () => voteWinner(randomHamsterTwo, randomHamsterOne): undefined}>Vote</button>
           </div>
         ) : (
-          "Loading second challenger....."
+          "Loading second hamster....."
         )}
 
       </section>
@@ -142,7 +135,7 @@ async function getRandomHamsters() {
      
 
             <br />
-            <img className="challenger-img" src={"img/" + winner.imgName} alt="A hamster" />
+            <img className="challenger-img" src={winner.imgName.includes('http') ? winner.imgName : `img/${winner.imgName}`} alt="A hamster" />
             <br />
             <button onClick={() => resetGame()}>next game</button>
            
