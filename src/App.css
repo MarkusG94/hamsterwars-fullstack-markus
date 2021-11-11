@@ -8,6 +8,7 @@
 	/* padding: 0em 2em; */
 	max-width: 1000px;
 	margin: 0 auto;
+	height: 100%;
 	
 }
 
@@ -124,7 +125,6 @@ img {
 .start-page {
 	background: #FFE57D;
 	padding: 3em;
-	height: 100vh;
 }
 .cutest-hamster-card {
 	display: flex;
@@ -402,7 +402,6 @@ input::placeholder {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-	height: 100vh;
 	background: #FFE57D;
 }
 
