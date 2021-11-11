@@ -4,13 +4,13 @@ import Battle from './components/Battle';
 import Gallery from './components/Gallery';
 import StartPage from './components/StartPage';
 import Nav from './components/Nav';
-import { Link, Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Link, Switch, Route  } from 'react-router-dom';
 
 
 function App() {
 	return (
 		<div className="app">
-			<Router>
+			
 				<nav className="nav">
                 <section className="nav-logo-text">
                 <img className="nav-logo" src="img/hamster-logo.svg" alt ="a hamster" />
@@ -29,16 +29,16 @@ function App() {
 		<main className="app-main">
 
 		<Switch>
-		<Route path="/" exact> <StartPage /> </Route>
-		<Route path="/battle"> <Battle /> </Route>
-		<Route path="/gallery"> <Gallery /> </Route>
+			<Route path="/" exact> <StartPage /> </Route>
+			<Route path="/battle"> <Battle /> </Route>
+			<Route path="/gallery"> <Gallery /> </Route>
 
-		<Route path="/"> <BadUrl /> </Route>
+			<Route path="*"> <BadUrl /> </Route>
 		</Switch>
 
 			
 		</main>
-		</Router>
+		
 		</div>
 	);
 }
