@@ -1,13 +1,15 @@
+import { Hamster } from "../models/Hamster";
 
 
 interface OverlayStatsProps {
 
     close: () => void;
+    
 }
 
 
 const OverlayStats = ({close}:OverlayStatsProps) => {
-
+    
     return(
         <div className="overlayy">
             <div className="dialogg">

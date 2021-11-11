@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { Hamster } from "../models/Hamster"
+import OverlayStats from "./OverlayStats";
 
 interface HamsterCard {
     hamster: Hamster;

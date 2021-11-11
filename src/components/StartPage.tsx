@@ -16,7 +16,7 @@ const StartPage = () => {
     }
     
 }
-console.log();
+
 
 
     useEffect(() => {
@@ -27,17 +27,23 @@ console.log();
 
         <div className="start-page">
              <div className="test-content">
-                <h1 className="test-title">Hamster Wars</h1>
+                <h1 className="test-title"> Welcome to Hamster Wars</h1>
+                <p className="test-p"> <br />This game is very simple. <br/> 
+                Go to the battle page and click on the hamster you think is the cutest one. Thats it!<br/>
+                Also, if you want to check out all our hamsters or if you want to add one yourself, you can visit the gallery.
+                
+                 </p>
              </div>
 
            
         {cutestHamster
         ? cutestHamster.map(hamster => (
             <div className="cutest-hamster-card" key={hamster.id}>
-                
-                <img src={`img/${hamster.imgName}`} alt={hamster.name} />
-                <h2>{hamster.name}</h2>
-                <p>{hamster.wins}</p>
+                <div className="cutest-card">
+                <h3>The currently cutest hamster is:</h3>
+                <img className="cutest-img" src={hamster.imgName.includes('http') ? hamster.imgName : `img/${hamster.imgName}` } alt={hamster.name} />
+                <h1>{hamster.name}</h1>
+                </div>
             </div>
         ))
     : "Waiting for the cutest hamster...."}

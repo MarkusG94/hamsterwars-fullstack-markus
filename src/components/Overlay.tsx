@@ -152,15 +152,15 @@ const Overlay = ({ close, addHamster }: OverlayProps) => {
 
 
                 <div className="overlay-buttons">
-                    <a href="#" onClick={handleAddHamster}>
+                    {/* <a href="#" onClick={handleAddHamster} type="submit" disabled={} >
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                         
-                        Lägg till</a>
-                    {/* <button type="submit" onClick={handleAddHamster} disabled={!validForm}> Add Hamster </button> */}
-                    <button className="custom-btn btn-2" onClick={close}> Cancel </button>
+                        Add hamster</a> */}
+                    <button  className="custom-btn btn-14" type="submit" onClick={handleAddHamster} disabled={!validForm}> Add Hamster </button>
+                    <button  className="custom-btn btn-2" onClick={close}> Cancel </button>
                 </div>
             </div>
         </div>

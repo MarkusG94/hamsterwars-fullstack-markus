@@ -101,7 +101,7 @@ async function getRandomHamsters() {
             <p> games = {randomHamsterOne.games}</p> */}
             
               <br />
-            <button onClick={(randomHamsterOne && randomHamsterTwo)? () => voteWinner(randomHamsterOne, randomHamsterTwo): undefined}>Vote</button>
+            <button className="custom-btn btn-3" onClick={(randomHamsterOne && randomHamsterTwo)? () => voteWinner(randomHamsterOne, randomHamsterTwo): undefined}><span>Vote</span></button>
           </div>
         ) : (
           "Loading first hamster....."
@@ -117,7 +117,7 @@ async function getRandomHamsters() {
             <p> defeats = {randomHamsterTwo.defeats}</p>
             <p> games = {randomHamsterTwo.games}</p> */}
               <br />
-            <button onClick={(randomHamsterOne && randomHamsterTwo)? () => voteWinner(randomHamsterTwo, randomHamsterOne): undefined}>Vote</button>
+            <button className="custom-btn btn-3" onClick={(randomHamsterOne && randomHamsterTwo)? () => voteWinner(randomHamsterTwo, randomHamsterOne): undefined}><span>Vote</span></button>
           </div>
         ) : (
           "Loading second hamster....."
@@ -126,34 +126,72 @@ async function getRandomHamsters() {
       </section>
       ) : <section className="show-winner">
               
+             
             {winner? 
-            <section>
+            <section className="show-winner-container">
               
             <div className="challenger-card">
-            <h1>THE WINNER IS</h1>
-            <h2>{winner.name}</h2>
-     
-
+              <h1>THE WINNER IS</h1>
             <br />
             <img className="challenger-img" src={winner.imgName.includes('http') ? winner.imgName : `img/${winner.imgName}`} alt="A hamster" />
+            
             <br />
-            <button onClick={() => resetGame()}>next game</button>
+
+            <article className="winner-info">
+                  <h3>Name: {winner.name}</h3>
+                  <h3>Total wins: {winner.wins}</h3>
+                  <h3>Total games: {winner.games}</h3>
+                  <h3>Total defeats: {winner.defeats}</h3>
+
+                </article>
+
+           
            
             </div>
             </section>
             : 
             null} 
+              
+            {loser? 
+            <section>
+              
+            <div className="challenger-card">
+              <h1>THE LOSER IS</h1>
+            <br />
+            <img className="challenger-img" src={loser.imgName.includes('http') ? loser.imgName : `img/${loser.imgName}`} alt="A hamster" />
             
-            {/* {loser?
-           <div>loser is {loser.name}</div>
+            <br />
+
+            <article className="winner-info">
+                  <h3>Name: {loser.name}</h3>
+                  <h3>Total wins: {loser.wins}</h3>
+                  <h3>Total games: {loser.games}</h3>
+                  <h3>Total defeats: {loser.defeats}</h3>
+
+                </article>
+                
+            
            
-           
-           : null} */}
+            </div>
+            </section>
+            : 
+            null} 
+        
      <div>
-      
+ 
+    
     </div>
+
       </section>
+      
       }
+          {winner && loser? (  
+              <>
+           <div className="next-game-btn">
+            <button onClick={() => resetGame()}>next game</button>
+            </div>
+            
+            </>  )  : null }
  
     </div>
   );

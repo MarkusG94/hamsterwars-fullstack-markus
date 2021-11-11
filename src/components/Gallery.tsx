@@ -10,7 +10,7 @@ const Gallery = () => {
     //get all hamsters from the database
     const [hamsters, setHamsters] = useState<Hamster[]>([]);
 	const [showAddHamsterOverlay, setShowAddHamsterOverlay] = useState<boolean>(false) 
-	const [showStats, setShowStats] = useState<boolean>(true)  // ändra till false när vi testat klart
+	const [showStats, setShowStats] = useState<boolean>(false)  // ändra till false när vi testat klart
 
 
 
@@ -62,7 +62,10 @@ const Gallery = () => {
         <>
             {addHamsterOverlay}
             {addStatsOverlay}
-            <button className="button-add-hamster" onClick={showOverlay}>ADD HAMSTER</button>
+            <header className="gallery-header">
+            <h1>Gallery</h1>
+            <button className="custom-btn btn-11" onClick={showOverlay}>ADD HAMSTER</button>
+            </header>
         <div className="card-container-body">
             
              {hamsters.map(hamster => 
