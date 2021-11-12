@@ -10,10 +10,7 @@ import { Switch, Route  } from 'react-router-dom';
 function App() {
 	return (
 		<div className="app">
-			
-
-
-			 <Nav /> 
+			<Nav /> 
 		<main className="app-main">
 
 		<Switch>
@@ -26,7 +23,6 @@ function App() {
 
 			
 		</main>
-		<footer className="asdasd"></footer>
 		
 		</div>
 	);

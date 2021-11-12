@@ -104,7 +104,7 @@ const Battle = () => {
               <br />
               <div className="vote-btns">
                 <button
-                  className="custom-btn btn-3"
+                  className="custom-btn btn-1"
                   onClick={
                     randomHamsterOne && randomHamsterTwo
                       ? () => voteWinner(randomHamsterOne, randomHamsterTwo)
@@ -139,7 +139,7 @@ const Battle = () => {
               <br />
               <div className="vote-btns">
                 <button
-                  className="custom-btn btn-3"
+                  className="custom-btn btn-1"
                   onClick={
                     randomHamsterOne && randomHamsterTwo
                       ? () => voteWinner(randomHamsterTwo, randomHamsterOne)
@@ -218,8 +218,8 @@ const Battle = () => {
         </section>
       )}
       <div className="next-game-btn">
-        <button className="custom-btn btn-1" onClick={() => resetGame()}>
-          Next game
+        <button className="custom-btn btn-3" onClick={() => resetGame()}>
+        <span>Next game</span>
         </button>
       </div>
     </div>
