@@ -496,8 +496,8 @@ input::placeholder {
 }
 
 .btn-3 {
-	background: rgb(20, 247, 58);
-  	background: linear-gradient(0deg, rgb(20, 247, 58) 0%, rgb(20, 154, 14) 100%);
+	background: rgb(29, 28, 28);
+  	background: rgb(29, 28, 28);;
 	width: 130px;
 	height: 40px;
 	line-height: 42px;
@@ -517,7 +517,7 @@ input::placeholder {
 	content: "";
 	right: 0;
 	top: 0;
-	background: rgb(20, 247, 58);
+	background: rgb(126, 124, 124);
 	transition: all 0.3s ease;
   }
   .btn-3:before {
@@ -547,7 +547,7 @@ input::placeholder {
 	content: "";
 	left: 0;
 	bottom: 0;
-	background: rgb(20, 247, 58);
+	background: rgb(126, 124, 124);
 	transition: all 0.3s ease;
   }
   .btn-3 span:before {
