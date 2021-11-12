@@ -592,7 +592,7 @@ input::placeholder {
 :root {
 	--clr-neutral-900: hsl(207, 19%, 9%);
 	--clr-neutral-100: hsl(0, 0%, 100%);
-	--clr-accent-400: hsl(142, 90%, 61%);
+	--clr-accent-400: #d1803e;
 }
 
 
@@ -611,10 +611,10 @@ input::placeholder {
 	/* padding-right: 15em; */
 
 
-		gap: 1rem;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
+	gap: 1rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .card {
