@@ -11,9 +11,13 @@ const StartPage = () => {
         const hamsters = await response.json();
 
         if(hamsters && hamsters.length > 1) {
-            setCutestHamster([hamsters[Math.floor(Math.random() * hamsters.length)]]); 
-    } else if (hamsters && hamsters.length === 1) {
-        setCutestHamster([hamsters[0]]);
+            setCutestHamster([hamsters[0]]);
+        } 
+        else if (hamsters && hamsters.length === 1) {
+            // setCutestHamster([hamsters[Math.floor(Math.random() * hamsters.length)]]); 
+            setCutestHamster([hamsters[0]]);
+
+            
     }
     
 }
