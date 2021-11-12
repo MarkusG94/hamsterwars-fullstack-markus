@@ -27,7 +27,7 @@ const GalleryCard = ({ hamster, deleteHamster, closeStats }: HamsterCard) => {
         <p className="card-body">
           {hamster.name} är {hamster.age} år gammal och älskar att{" "}
           {hamster.loves}. <br />
-          {hamster.name}s favoritmat är {hamster.favFood}
+          {hamster.name}s favoritmat är {hamster.favFood} <br /> Antal vinster: {hamster.wins} <br />
         </p>
         <section className="button-container">
           <div className="button" onClick={() => closeStats()}>
