@@ -37,8 +37,8 @@ const StartPage = () => {
              </div>
 
            
-        {cutestHamster
-        ? cutestHamster.map(hamster => (
+        {cutestHamster ?
+         cutestHamster.map(hamster => (
             <div className="cutest-hamster-card" key={hamster.id}>
                 <div className="cutest-card">
                 <h3>The currently cutest hamster is:</h3>
