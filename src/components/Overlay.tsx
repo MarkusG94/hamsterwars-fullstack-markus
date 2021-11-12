@@ -37,6 +37,7 @@ const Overlay = ({ close, addHamster }: OverlayProps) => {
             }
         })
         const data = await response.json()
+        console.log('Hamster added', data)
         addHamster()
         close()
 

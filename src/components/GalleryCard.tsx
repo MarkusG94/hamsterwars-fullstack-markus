@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Hamster } from "../models/Hamster";
-import OverlayStats from "./OverlayStats";
+
 
 interface HamsterCard {
   hamster: Hamster;
-  deleteHamster: any;
-  closeStats: any;
+  deleteHamster: (id: string) => void;
+  closeStats: () => void;
 }
 
 const GalleryCard = ({ hamster, deleteHamster, closeStats }: HamsterCard) => {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Hamster } from "../models/Hamster";
 
 const StartPage = () => {
@@ -29,8 +30,8 @@ const StartPage = () => {
              <div className="test-content">
                 <h1 className="test-title"> Welcome to Hamster Wars</h1>
                 <p className="test-p"> <br />This game is very simple. <br/> 
-                Go to the battle page and click on the hamster you think is the cutest one. Thats it!<br/>
-                Also, if you want to check out all our hamsters or if you want to add one yourself, you can visit the gallery.
+                Go to the <Link className="start-link" to="/battle">BATTLE</Link> page and click on the hamster you think is the cutest one. Thats it!<br/>
+                Also, if you want to check out all our hamsters or if you want to add one yourself, you can visit the <Link className="start-link" to="/battle">GALLERY</Link> .
                 
                  </p>
              </div>

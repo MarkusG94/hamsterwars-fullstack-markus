@@ -4,95 +4,129 @@ import Overlay from "./Overlay";
 import GalleryCard from "./GalleryCard";
 import OverlayStats from "./OverlayStats";
 
+
+
 const Gallery = () => {
-  //get all hamsters from the database
-  const [hamsters, setHamsters] = useState<Hamster[]>([]);
-  const [showAddHamsterOverlay, setShowAddHamsterOverlay] =
-    useState<boolean>(false);
-  const [showStats, setShowStats] = useState<boolean>(false); // ändra till false när vi testat klart
+    //get all hamsters from the database
+    const [hamsters, setHamsters] = useState<Hamster[]>([]);
+	const [showAddHamsterOverlay, setShowAddHamsterOverlay] = useState<boolean>(false) 
+	const [showStats, setShowStats] = useState<boolean>(false)  // ändra till false när vi testat klart
+    const [searchString, setSearchstring] = useState<string>('');
 
-  async function getHamsters() {
-    const response = await fetch("/hamsters");
-    const hamsterArray = await response.json();
-    setHamsters(hamsterArray);
-  }
 
-  const showOverlay = () => {
-    setShowAddHamsterOverlay(true);
-  };
+    function filterHamsters(hamsters: Hamster[], searchString: string): Hamster[] {
+        return hamsters.filter(hamster => {
+            if( searchString === '' ) {
+                //visa alla hamstrar
+                return true
+            } else {
+                //visa alla hamstrar som matchar söksträngen'
+                const hamsterName = hamster.name.toLowerCase()
+                const search = searchString.toLowerCase()
+        
+                //Leta i hela strängen
+                //return title.includes(search)
+                return hamsterName.includes(search)
+            }
+        
+        })
+        }
 
-  const showStatsOverlay = () => {
-    setShowStats(true);
-  };
+	    const filteredHamsters: Hamster[] = filterHamsters(hamsters, searchString)
 
-  useEffect(() => {
-    getHamsters();
-  }, []);
 
-  const deleteHamster = async (id: string) => {
-    await fetch(`/hamsters/${id}`, {
-      method: "DELETE",
-    });
-    getHamsters();
-  };
 
-  const addHamster = () => {
-    getHamsters();
-  };
+    async function getHamsters() {
+        const response = await fetch("/hamsters");
+        const hamsterArray = await response.json();
+        setHamsters(hamsterArray);
+    }
 
-  let addHamsterOverlay = null;
-  if (showAddHamsterOverlay) {
-    const closeOverlay = () => setShowAddHamsterOverlay(false);
-    addHamsterOverlay = (
-      <Overlay close={closeOverlay} addHamster={addHamster} />
-    );
-    // JSX översätts till funktionsanrop: _jsx('h1', 'content')
-  }
-  let addStatsOverlay = null;
+    const showOverlay = () => {
+        setShowAddHamsterOverlay(true);
+    }
 
-  if (showStats) {
-    const closeStatsOverlay = () => setShowStats(false);
-    addStatsOverlay = <OverlayStats close={closeStatsOverlay} />;
-  }
+    const showStatsOverlay = () => {
+        setShowStats(true);
+    }
 
-  return (
-    <>
-      {addHamsterOverlay}
-      {addStatsOverlay}
-      <header className="gallery-header">
-        <h1>Gallery</h1>
-        <button className="custom-btn btn-11" onClick={showOverlay}>
-          ADD HAMSTER
-        </button>
-      </header>
-      <div className="card-container-body">
-        {hamsters.map((hamster) => (
-          <GalleryCard
-            hamster={hamster}
-            key={hamster.id}
-            deleteHamster={deleteHamster}
-            closeStats={showStatsOverlay}
-          />
-        ))}
-      </div>
-    </>
-  );
-};
+    useEffect(() => {
+      getHamsters();
+    }, [])
+  
+    const deleteHamster = async (id: string) => {
+        await fetch(`/hamsters/${id}`, {
+            method: "DELETE",
+        });
+        getHamsters()
+    }
 
-export default Gallery;
+    const addHamster = () => {
+        getHamsters()
+    }
 
-//     <div className="card-container-body">
-//         {hamsters.map(hamster => (
-//     <div className="card" key={hamster.id} style={{ backgroundImage:`url('img/${hamster.imgName}')` }}>
-//         <div className="card-content">
-//             <h2 className="card-title">{hamster.name}</h2>
-//             <p className="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-//             Explicabo minima</p>
-//              <a  className="button">Learn More</a>
-//         </div>
 
-//     </div>
-//     ))}
+    let addHamsterOverlay = null
+	if( showAddHamsterOverlay ) {
+		const closeOverlay = () => setShowAddHamsterOverlay(false)
+		addHamsterOverlay = <Overlay close={closeOverlay} addHamster={addHamster} />
+		// JSX översätts till funktionsanrop: _jsx('h1', 'content')
+	}
+    let addStatsOverlay = null
+   
+    if(showStats) {
+        const closeStatsOverlay = () => setShowStats(false)
+        addStatsOverlay = <OverlayStats close={closeStatsOverlay} />
+    }
 
-// </div>
-// )
+
+
+    return (
+        <>
+            {addHamsterOverlay}
+            {addStatsOverlay}
+            <header className="gallery-header">
+            <h1>Gallery</h1>
+            <input type="text"
+            className="search-hamster"
+			value={searchString}
+			onChange={event => setSearchstring(event.target.value)}
+            placeholder='🔍 Search hamster' 
+			/>
+            <button className="custom-btn btn-11" onClick={showOverlay}>ADD HAMSTER</button>
+            </header>
+        <div className="card-container-body">
+            
+             {filteredHamsters.map(hamster => 
+                <GalleryCard hamster={hamster} key={hamster.id} deleteHamster={deleteHamster} closeStats={showStatsOverlay}
+                />)}
+                
+            </div>
+        </>
+
+    )
+}
+
+
+
+
+
+export default Gallery
+
+
+
+    //     <div className="card-container-body">
+    //         {hamsters.map(hamster => (
+    //     <div className="card" key={hamster.id} style={{ backgroundImage:`url('img/${hamster.imgName}')` }}>
+    //         <div className="card-content">
+    //             <h2 className="card-title">{hamster.name}</h2>
+    //             <p className="card-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    //             Explicabo minima</p>
+    //              <a  className="button">Learn More</a>
+    //         </div>
+            
+    //     </div>
+    //     ))}
+            
+    // </div>
+    // )

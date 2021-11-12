@@ -4,7 +4,7 @@ import Battle from './components/Battle';
 import Gallery from './components/Gallery';
 import StartPage from './components/StartPage';
 import Nav from './components/Nav';
-import { Link, Switch, Route  } from 'react-router-dom';
+import { Switch, Route  } from 'react-router-dom';
 
 
 function App() {

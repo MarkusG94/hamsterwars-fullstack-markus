@@ -7,7 +7,7 @@ const Nav = () => {
         <div>
         	<nav className="nav">
                 <section className="nav-logo-text">
-                    <img className="nav-logo" src="img/hamster-logo.svg" alt ="a hamster" />
+                    <Link className="nav-link" to="/"><img className="nav-logo" src="img/hamster-logo.svg" alt ="a hamster" /> </Link>
                     <h1 className="nav-title">HAMSTERWARS</h1>
                 </section> 
                  <section className="nav-links">

@@ -6,9 +6,9 @@
 	box-sizing: border-box;
 }
 
-body {
+/* body {
 	background-color: #FFD595;
-}
+} */
 
 .app {
 	/* padding: 0em 2em; */
@@ -20,8 +20,8 @@ body {
 
 .app-main {
 	font-family: 'Open Sans', sans-serif;
-	box-shadow: 0 0 3em rgb(0 0 0 / 15%);
-	background: #FFE57D;
+	/* box-shadow: 0 0 3em rgb(0 0 0 / 15%); */
+	/* background: #FFE57D; */
 	
 }
 
@@ -63,7 +63,7 @@ img {
 .nav-text:hover {
 /* hover effect text */
 	opacity: 1;
-	color: #00bcd4;
+	color: #FFE57D;
 
 
 }
@@ -72,6 +72,10 @@ img {
 	height: 3.5rem;
 	width: 3.5rem;
 	cursor: pointer;
+}
+
+.nav-logo:hover {
+	top: 1rem;
 }
 .nav-title {
 	font-family: 'Architects Daughter', cursive;
@@ -106,12 +110,19 @@ img {
 }
 .gallery-header {
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 	flex-direction: row;
 	padding: 0 1.5rem;
-
 }
+
+.search-hamster {
+    border: 3px solid #000;
+    padding: 0.7rem;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
 .gallery-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -129,7 +140,7 @@ img {
 /* ----STARTPAGE---- */
 
 .start-page {
-	background: #FFE57D;
+	/* background: #FFE57D; */
 	padding: 3em;
 }
 .cutest-hamster-card {
@@ -195,6 +206,14 @@ img {
 	background-position: right;
 }
 
+.start-link {
+	text-decoration: none;
+    color: brown;
+}
+
+.start-link:hover {
+	color: #FFE57D;
+}
 
 
 
@@ -408,30 +427,37 @@ input::placeholder {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-	background: #FFE57D;
+	/* background: #FFE57D; */
 	/* height: 100vh; */
 }
 
 .battle-text {
 	font-family: 'Open Sans', sans-serif;
 }
-
-.challengers {
+.battle-vs {
+	font-size: 7rem;
 	display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
+}
+.challengers {
+	grid-template-columns: repeat(3,1fr);
+	display: grid;
 }
 
 .challenger-img {
 
+    width: 100%;
     height: 20rem;
     object-fit: cover;
-    object-position: top;
+    /* object-position: top; */
+	border-radius: 2rem;
 
 }
 
 .challenger-card {
-	width: 100%;
+	/* width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -441,7 +467,17 @@ input::placeholder {
 	margin: 1em;
 	background-image: linear-gradient(to left bottom, #fba300, #fca70b, #fcaa14, #fdae1b, #feb121, #feb631, #ffbb3e, #ffc04a, #ffc75f, #ffce72, #ffd485, #ffdb98);
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-	border-radius: 5rem;
+	border-radius: 5rem; */
+	border-radius: 2rem;
+	text-align: center;
+	border-radius: 2rem;
+	background: white;
+	box-shadow: 0 0 2rem rgb(0 0 0 / 10%);
+}
+
+.challenger-figure {
+	margin: 0;
+    padding: 0;
 }
 
 .challenger-winner-text {
@@ -449,15 +485,29 @@ input::placeholder {
 }
 
 .show-winner {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+	grid-template-columns: repeat(2, 1fr);
+	display: grid;
+	grid-gap: 1rem;
 }
 
 .show-winner-container {
-	display: flex;
+	max-width: 1000px;
+    gap: 1rem;	
+	margin: 0 auto;
 }
+
+.result-text {
+	text-align: center;
+}
+
+.vote-btns {
+	text-align: center;
+}
+/* .next-game-btn {
+
+
+} */
+
 .btn-3 {
 	background: rgb(20, 247, 58);
   	background: linear-gradient(0deg, rgb(20, 247, 58) 0%, rgb(20, 154, 14) 100%);
@@ -502,7 +552,7 @@ input::placeholder {
 	width: 100%;
   }
   .btn-3 span:hover{
-	 color: #fff;
+	 color: #000;
   }
   .btn-3 span:before,
   .btn-3 span:after {
@@ -527,7 +577,15 @@ input::placeholder {
   .btn-3 span:hover:after {
 	width: 100%;
   }
-
+  .btn-1 {
+	background: rgb(6,14,131);
+	background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+	border: none;
+  }
+  .btn-1:hover {
+	background: rgb(0,3,255);
+  	background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+  }
 
 /* ---- CARD ---- */
 
@@ -676,7 +734,6 @@ input::placeholder {
 	color: #fff;
 	overflow: hidden;
 	width: 10rem;
-	margin-left: auto;
   }
   .btn-11:hover {
 	  text-decoration: none;

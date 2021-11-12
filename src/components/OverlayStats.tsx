@@ -1,4 +1,3 @@
-import { Hamster } from "../models/Hamster";
 
 
 interface OverlayStatsProps {
