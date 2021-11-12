@@ -106,7 +106,7 @@ const Overlay = ({ close, addHamster }: OverlayProps) => {
                         onBlur={() => setNameTouch(true)}
                         onChange={e => setName(e.target.value)} />
                     <span className="placeholder">Hamsterns namn</span>
-                    <span className={nameClass}>Var vänlig skriv ett annat namn</span>
+                    <span className={nameClass}>Namnet skall innehålla minst 2 tecken</span>
 
                 </label>
 
@@ -125,7 +125,7 @@ const Overlay = ({ close, addHamster }: OverlayProps) => {
                         onBlur={() => setLovesTouch(true)}
                         onChange={e => setLoves(e.target.value)} />
                     <span className="placeholder">Hamstern älskar att..</span>
-                    <span className={lovesClass}>Skriv minst 2 tecken</span>
+                    <span className={lovesClass}>Vänligen skriv minst 2 tecken</span>
 
                 </label>
                 <label className="custom-field">
@@ -134,7 +134,7 @@ const Overlay = ({ close, addHamster }: OverlayProps) => {
                         onBlur={() => setFavFoodTouch(true)}
                         onChange={e => setFavfood(e.target.value)} />
                     <span className="placeholder">Hamsterns favoritmat är..</span>
-                    <span className={favFoodClass}>Skriv minst 2 tecken</span>
+                    <span className={favFoodClass}>Vänligen skriv minst 2 tecken</span>
 
                 </label>
                 <label className="custom-field">
