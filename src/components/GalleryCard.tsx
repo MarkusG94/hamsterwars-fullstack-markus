@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { Hamster } from "../models/Hamster";
+import OverlayStats from "./OverlayStats";
 
 
 interface HamsterCard {
-  hamster: Hamster;
+  hamster: any;
   deleteHamster: (id: string) => void;
-  closeStats: () => void;
+//   closeStats: () => void;
 }
 
-const GalleryCard = ({ hamster, deleteHamster, closeStats }: HamsterCard) => {
+const GalleryCard = ({ hamster, deleteHamster }: HamsterCard) => {
+
+	const [showStats, setShowStats] = useState<boolean>(false)  // ändra till false när vi testat klart
+
 
   const [imgSrc] = useState<string>(
     hamster.imgName.includes("http")
@@ -16,7 +20,20 @@ const GalleryCard = ({ hamster, deleteHamster, closeStats }: HamsterCard) => {
       : `img/${hamster.imgName}`
   );
 
+  const showStatsOverlay = () => {
+    setShowStats(true);
+}
+
+  let addStatsOverlay = null
+   
+  if(showStats) {
+      const closeStatsOverlay = () => setShowStats(false)
+      addStatsOverlay = <OverlayStats close={closeStatsOverlay} hamster={hamster} />
+  }
+
   return (
+      <>
+     {addStatsOverlay}
     <div
       className="card"
       key={hamster.id}
@@ -30,7 +47,7 @@ const GalleryCard = ({ hamster, deleteHamster, closeStats }: HamsterCard) => {
           {hamster.name}s favoritmat är {hamster.favFood} <br /> Antal vinster: {hamster.wins} <br />
         </p>
         <section className="button-container">
-          <div className="button" onClick={() => closeStats()}>
+          <div className="button" onClick={() => showStatsOverlay()}>
             Stats
           </div>
           <div
@@ -42,7 +59,9 @@ const GalleryCard = ({ hamster, deleteHamster, closeStats }: HamsterCard) => {
         </section>
       </div>
     </div>
+    </>
   );
+  
 };
 
 export default GalleryCard;

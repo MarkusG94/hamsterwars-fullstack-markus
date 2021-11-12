@@ -10,7 +10,7 @@ const Gallery = () => {
     //get all hamsters from the database
     const [hamsters, setHamsters] = useState<Hamster[]>([]);
 	const [showAddHamsterOverlay, setShowAddHamsterOverlay] = useState<boolean>(false) 
-	const [showStats, setShowStats] = useState<boolean>(false)  // ändra till false när vi testat klart
+	// const [showStats, setShowStats] = useState<boolean>(false)  // ändra till false när vi testat klart
     const [searchString, setSearchstring] = useState<string>('');
 
 
@@ -46,9 +46,9 @@ const Gallery = () => {
         setShowAddHamsterOverlay(true);
     }
 
-    const showStatsOverlay = () => {
-        setShowStats(true);
-    }
+    // const showStatsOverlay = () => {
+    //     setShowStats(true);
+    // }
 
     useEffect(() => {
       getHamsters();
@@ -72,19 +72,19 @@ const Gallery = () => {
 		addHamsterOverlay = <Overlay close={closeOverlay} addHamster={addHamster} />
 		// JSX översätts till funktionsanrop: _jsx('h1', 'content')
 	}
-    let addStatsOverlay = null
+    // let addStatsOverlay = null
    
-    if(showStats) {
-        const closeStatsOverlay = () => setShowStats(false)
-        addStatsOverlay = <OverlayStats close={closeStatsOverlay} />
-    }
+    // if(showStats) {
+    //     const closeStatsOverlay = () => setShowStats(false)
+    //     addStatsOverlay = <OverlayStats close={closeStatsOverlay} />
+    // }
 
 
 
     return (
         <>
             {addHamsterOverlay}
-            {addStatsOverlay}
+            {/* {addStatsOverlay} */}
             <header className="gallery-header">
             <h1>Gallery</h1>
             <input type="text"
@@ -98,7 +98,7 @@ const Gallery = () => {
         <div className="card-container-body">
             
              {filteredHamsters.map(hamster => 
-                <GalleryCard hamster={hamster} key={hamster.id} deleteHamster={deleteHamster} closeStats={showStatsOverlay}
+                <GalleryCard hamster={hamster} key={hamster.id} deleteHamster={deleteHamster} 
                 />)}
                 
             </div>

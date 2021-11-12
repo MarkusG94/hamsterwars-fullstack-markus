@@ -21,7 +21,7 @@ Efter röstnignen får användaren möjlighet att starta en nytt spel.
 
 ## Galleri 
 
-Alla hamstrar visas i ett grid. Här kan du lägga till en hamster eller få mer information om de hamstrar som finns i galleriet. För att få mer information om respektive hamster så hovrar du enkelt musen på hamsterns bild. Du kan även söka efter en specifik hamster. I framtiden skall jag även lägga till så du kan få klicka dig vidare för att se hamsterns statistik i framtiden.
+Alla hamstrar visas i ett grid. Här kan du lägga till en hamster eller få mer information om de hamstrar som finns i galleriet. För att få mer information om respektive hamster så hovrar du enkelt musen på hamsterns bild. Har lagt till en knapp som heter stats där du kan se antal matcher samt förluster och vinster. Det finns även en knapp för att ta bort en hamster. En searchbar finns där du enkelt kan söka efter önskad hamster.
 
 <hr>
 
