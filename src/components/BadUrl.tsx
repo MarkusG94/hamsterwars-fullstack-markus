@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 const BadUrl = () => {
     
     return(
-        <div>Bad url, <Link to="/">go back to startpage</Link></div>
+        <div>Something went wrong, i suggest you to <Link to="/">go back to startpage</Link> and try again</div>
     )
 }
 

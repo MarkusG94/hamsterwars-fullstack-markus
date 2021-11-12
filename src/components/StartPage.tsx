@@ -31,7 +31,7 @@ const StartPage = () => {
                 <h1 className="test-title"> Welcome to Hamster Wars</h1>
                 <p className="test-p"> <br />This game is very simple. <br/> 
                 Go to the <Link className="start-link" to="/battle">BATTLE</Link> page and click on the hamster you think is the cutest one. Thats it!<br/>
-                Also, if you want to check out all our hamsters or if you want to add one yourself, you can visit the <Link className="start-link" to="/battle">GALLERY</Link> .
+                Also, if you want to check out all our hamsters or if you want to add one yourself, you can visit the <Link className="start-link" to="/gallery">GALLERY</Link> .
                 
                  </p>
              </div>

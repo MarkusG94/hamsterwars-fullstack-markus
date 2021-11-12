@@ -31,7 +31,7 @@ const GalleryCard = ({ hamster, deleteHamster, closeStats }: HamsterCard) => {
         </p>
         <section className="button-container">
           <div className="button" onClick={() => closeStats()}>
-            Statistik
+            Stats
           </div>
           <div
             onClick={() => deleteHamster(hamster.id)}
