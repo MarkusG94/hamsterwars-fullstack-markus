@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { OverlayProps } from '../models/Overlayprops'
 
 
-
 const Overlay = ({ close, addHamster }: OverlayProps) => {
     const [age, setAge] = useState<number>(0)
     const [name, setName] = useState<string>('')
@@ -74,6 +73,7 @@ const Overlay = ({ close, addHamster }: OverlayProps) => {
         return true
     }
 
+
     function isValidLoves(loves: string): boolean {
         return loves.length >= 2
     }
@@ -82,14 +82,21 @@ const Overlay = ({ close, addHamster }: OverlayProps) => {
         return favFood.length >= 2
     }
 
-    function isValidImgName(imgName: string): boolean {
-        return imgName.length >= 2
+    function isValidImgName(imgName: string) {
+        
+         if (imgName.includes('http') || imgName.includes('hamster')) return true
+
+        //  Alternativ validering nedan
+        //  if (imgName.includes('http') && imgName.length >= 10 || imgName.includes('hamster') && imgName.length >=8 ) return true
+
+        
     }
 
 
 
 
     return (
+        
         <div className="overlay">
             <div className="addForm">
                 <h2>Lägg till Ny hamster</h2>
@@ -136,7 +143,7 @@ const Overlay = ({ close, addHamster }: OverlayProps) => {
                         onBlur={() => setImgNameTouch(true)}
                         onChange={e => setImgName(e.target.value)} />
                     <span className="placeholder">Länk till en bild på hamstern</span>
-                    <span className={imgClass}>Var vänlig skriv en giltlig bildadress</span>
+                    <span className={imgClass}>URL:en ska innehålla http eller hamster</span>
 
                 </label>
 
@@ -165,6 +172,7 @@ const Overlay = ({ close, addHamster }: OverlayProps) => {
                 </div>
             </div>
         </div>
+        
     )
 }
 

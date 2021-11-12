@@ -4,7 +4,7 @@ import OverlayStats from "./OverlayStats";
 
 
 interface HamsterCard {
-  hamster: any;
+  hamster: Hamster;
   deleteHamster: (id: string) => void;
 //   closeStats: () => void;
 }
