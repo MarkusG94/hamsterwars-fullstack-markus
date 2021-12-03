@@ -15,7 +15,7 @@ På startsidan förklarar jag vad appen går ut på och hur man använder den sa
 ## Tävla
 
 Två hamstrar slumpas och användaren kan rösta på den som är sötast. Den hamstern som användaren röstar på får +1 vinst i sin statistik och förloraren får +1 förlust i sin.
-Efter röstnignen får användaren möjlighet att starta en nytt spel.
+Efter röstningen får användaren möjlighet att starta en nytt spel.
 
 <hr>
 
